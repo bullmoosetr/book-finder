@@ -1,0 +1,13 @@
+@font-face{
+  font-family: ptsans;
+  src: url("./leftist-font-collection/pt-sans-11750/PtSans-KZRW.ttf");
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: ptsans;
+  }

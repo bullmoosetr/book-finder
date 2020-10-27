@@ -22,8 +22,9 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    from app.lefty_books.leftist_books import leftist_books_bp
+    from app.lefty_books.leftist_books import leftist_books
 
-    app.register_blueprint(leftist_books_bp, url_prefix='/leftist_book_list')
+    app.register_blueprint(leftist_books)
+    app.add_url_rule('/', endpoint='index')
     
     return app

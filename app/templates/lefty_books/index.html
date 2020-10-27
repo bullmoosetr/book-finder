@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+    <h1>Index</h1>
+    <p class="important">
+      Welcome to my awesome homepage.
+    </p>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                {% for book in books %}
+                    <li class="list-group-item">
+                        <div class="book">
+                            <h3>{{ book['title'] }}</h3>
+                            <div class="book-image">
+                                <img src="{{ book.imageLinks.thumbnail }}" class="rounded">
+                            </div>
+                            <div class="about-book">
+                                <section>
+                                    {% if book['authors']|count <= 1 %}
+                                        <p>
+                                        Author: {{ book['authors']|join }}
+                                    {% else %}
+                                        Authors: {{ book['authors']|join(', ') }}
+                                    {% endif %}
+                                        </p>
+                                    {% if book['description'] %}
+                                        <p>
+                                            Description: {{ book['description'] }}
+                                        </p>
+                                    {% endif %}
+                                </section>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
