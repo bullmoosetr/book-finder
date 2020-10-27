@@ -16,9 +16,10 @@ build: ## Build Container
 rebuild: ## Rebuild Container
 		docker system prune -f
 		docker-compose build --no-cache ${APP_NAME}
+		docker-compose up -d ${APP_NAME}
 
 up: ## Bring up the Container Services
-	docker-compose up ${APP_NAME}
+	docker-compose up -d ${APP_NAME}
 
 down: ## Bring Down App Services
 	docker-compose down
