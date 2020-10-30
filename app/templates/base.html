@@ -17,15 +17,24 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <header class="top-header p-3">
+            <div class="row">
+                <div class="col text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Karl_Marx_%28OpenClipartVectors%29.svg/170px-Karl_Marx_%28OpenClipartVectors%29.svg.png">
+                    <h1>Leftward Literature</h1>
+                </div>
+            </div>
+        </header>
         <div id="content">
             {% block content %}{% endblock %}
         </div>
         <div id="footer">
             {% block footer %}
-            &copy; Copyright GNU License And Free For All <a href="http://domain.invalid/">Eric Laff</a>.
+            &copy; Copyright Open License And Free For All <a href="http://domain.invalid/">Eric Laff</a>.
             {% endblock %}
         </div>
     </div>
