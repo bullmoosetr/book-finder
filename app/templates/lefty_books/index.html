@@ -6,34 +6,86 @@
 {% block content %}
     <div class="row">
         <div class="col">
-            <ul class="list-group">
-                {% for book in books %}
-                    <li class="list-group-item">
-                        <div class="book">
-                            <h3>{{ book['title'] }}</h3>
-                            <div class="book-image">
-                                <img src="{{ book.imageLinks.thumbnail }}" class="rounded">
-                            </div>
-                            <div class="about-book">
-                                <section>
-                                    {% if book['authors']|count <= 1 %}
-                                        <p>
-                                        Author: {{ book['authors']|join }}
-                                    {% else %}
-                                        Authors: {{ book['authors']|join(', ') }}
-                                    {% endif %}
-                                        </p>
-                                    {% if book['description'] %}
-                                        <p>
-                                            Description: {{ book['description'] }}
-                                        </p>
-                                    {% endif %}
-                                </section>
-                            </div>
-                        </div>
-                    </li>
-                {% endfor %}
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#home">Marxism</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#communism">Communism</a>
+                </li>
             </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="home" class="container tab-pane active"><br>
+                    <ul class="list-group-flush">
+                        {% for book in books['marxism'] %}
+                            <li class="list-group-item w-75">
+                                <div class="book">
+                                    <h3>{{ book['title'] }}</h3>
+                                    <div class="book-image">
+                                        {% if book.imageLinks %}
+                                        <img src="{{ book.imageLinks.thumbnail }}" class="rounded">
+                                        {% endif %}
+                                    </div>
+                                    <div class="about-book">
+                                        <section>
+                                            {% if book['author'] %}
+                                                {% if book['authors']|count <= 1 %}
+                                                    <p>
+                                                    Author: {{ book['authors']|join }}
+                                                {% else %}
+                                                    Authors: {{ book['authors']|join(', ') }}
+                                                {% endif %}
+                                                    </p>
+                                            {% endif %}
+                                            {% if book['description'] %}
+                                                <p>
+                                                    Description: {{ book['description'] }}
+                                                </p>
+                                            {% endif %}
+                                        </section>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div id="communism" class="container tab-pane fade"><br>
+                    <ul class="list-group-flush">
+                        {% for book in books['communism'] %}
+                            <li class="list-group-item w-75">
+                                <div class="book">
+                                    <h3>{{ book['title'] }}</h3>
+                                    <div class="book-image">
+                                        {% if book.imageLinks %}
+                                        <img src="{{ book.imageLinks.thumbnail }}" class="rounded">
+                                        {% endif %}
+                                    </div>
+                                    <div class="about-book">
+                                        <section>
+                                            {% if book['author'] %}
+                                                {% if book['authors']|count <= 1 %}
+                                                    <p>
+                                                    Author: {{ book['authors']|join }}
+                                                {% else %}
+                                                    Authors: {{ book['authors']|join(', ') }}
+                                                {% endif %}
+                                                    </p>
+                                            {% endif %}
+                                            {% if book['description'] %}
+                                                <p>
+                                                    Description: {{ book['description'] }}
+                                                </p>
+                                            {% endif %}
+                                        </section>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

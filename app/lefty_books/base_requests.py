@@ -11,12 +11,16 @@ from settings import API_KEY
 """
 class BaseRequest:
 
-    def __init__(self, search, subject, author):
+    def __init__(self, search, subject, author=None):
         self.url = BASE_URL
         self.search = search
         self.subject = subject
         self.author = author
-        self.params = {"q" : f"{self.search} subject:{self.subject} inauthor:{self.author}", "key": API_KEY}
     
     def search_by_volumes(self):
-        return requests.get(self.url, params=self.params).json()
+        params = {"q" : f"{self.search} subject:{self.subject} inauthor:{self.author}", "key": API_KEY}
+        return requests.get(self.url, params=params).json()
+
+    def search_by_volumes_no_author(self):
+        params = {"q" : f"{self.search} subject:{self.subject}", "key": API_KEY}
+        return requests.get(self.url, params=params).json()
